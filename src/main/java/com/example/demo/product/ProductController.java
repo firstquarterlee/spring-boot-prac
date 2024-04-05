@@ -1,5 +1,6 @@
 package com.example.demo.product;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,9 +14,13 @@ public class ProductController {
 
     // 그 안에서, 그에 맞는 로직을 수행할 수 있도록 서비스한테 시킬거에요.
 
+    @Autowired
+    private ProductService productService;
+
     // 상품 조회
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String findProduct() {
-        return "NoteBook"; // 리스폰스 바디 데이터를 담아줘야함!
+//        ProductService productService = new ProductService();
+        return productService.findProduct(); // "NoteBook!";
     }
 }
